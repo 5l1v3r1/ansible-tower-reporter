@@ -5,7 +5,7 @@ import json
 import datetime
 
 # Set column spacing and formatting
-columnFormat = '{:<10} {:<60} {:<15} {:<50} {:<50} {:<50}'
+columnFormat = '{:<10} {:<60} {:<15} {:<80} {:<50} {:<50} {:<50}'
 
 # Get list of all items
 with settings.runtime_values():
@@ -31,8 +31,8 @@ print ""
 print ""
 
 # Print header information
-print columnFormat.format("ID", "NAME", "LAST RUN", "PROJECT NAME", "INVENTORY NAME", "CREDENTIALS")
-print '-' * 250
+print columnFormat.format("ID", "NAME", "LAST RUN", "PLAYBOOK", "PROJECT NAME", "INVENTORY NAME", "CREDENTIALS")
+print '-' * 300
 
 # Get resources
 #res_project = get_resource('project')
@@ -54,7 +54,7 @@ for item in list_results['results']:
   except KeyError:
     cred_name = "_NONE_"
 
-  print columnFormat.format(item['id'], item['name'], last_job, item['summary_fields']['project']['name'], item['summary_fields']['inventory']['name'] , cred_name)
+  print columnFormat.format(item['id'], item['name'], last_job, item['playbook'], item['summary_fields']['project']['name'], item['summary_fields']['inventory']['name'] , cred_name)
 
 print ""
 print ""
